@@ -1,0 +1,26 @@
+{
+  "name": "project-yezhov",
+  "version": "0.0.1",
+  "description": "You can use the [editor on GitHub](https://github.com/JosephHackett/Project-Yezhov/edit/master/README.md) to maintain and preview the content for your website in Markdown files.",
+  "main": "app.js",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
+    "typedi": "^0.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js",
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JosephHackett/Project-Yezhov.git"
+  },
+  "author": "Joe Hackett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JosephHackett/Project-Yezhov/issues"
+  },
+  "homepage": "https://github.com/JosephHackett/Project-Yezhov#readme"
+}
