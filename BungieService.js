@@ -6,6 +6,7 @@ class BungieService {
     
     constructor(){}
 
+    // gets Xur's current inventory from bungie
     async getXurInventory(){
 
         // Xur's ID, or hash as it is known to Bungie.net 
@@ -18,6 +19,11 @@ class BungieService {
             return await Promise.all(promises);
         }
         else {return Promise.reject("Xur is not active right now.");}
+    }
+
+    // returns an array list of possible items Xur may carry. 
+    async getXurPossibleInventory(){
+        return new Error('Not implemented yet.');
     }
 }
 
@@ -56,7 +62,7 @@ const getItemListing = (item) => {
         .then( data => {
             resolve({
                 name: data.data.Response.displayProperties.name,
-                Type: data.data.Response.itemTypeAndTierDisplayName
+                type: data.data.Response.itemTypeAndTierDisplayName
             });
         })
         .catch(err => reject(err));
