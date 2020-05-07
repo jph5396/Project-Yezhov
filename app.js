@@ -7,7 +7,7 @@ const cors = require('cors');
 const app = express();
 const axios = require('axios');
 bungieService = new BungieService();
-const port = 3000; 
+const port = process.env.PORT; 
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
