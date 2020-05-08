@@ -13,12 +13,12 @@ class BungieService {
         let xurId = 2190858386; 
         let vendorData = await getActivePublicVendors(); 
 
-        // if (isXurActive(vendorData)){
+        if (isXurActive(vendorData)){
             let saleList = Object.values(vendorData.data.Response.sales.data[xurId].saleItems);
             const promises = saleList.map(getItemListing);
             return await Promise.all(promises);
-        // }
-        // else {return Promise.reject("Xur is not active right now.");}
+        }
+        else {return Promise.reject("Xur is not active right now.");}
     }
 
     // returns an array list of possible items Xur may carry. 
@@ -49,7 +49,7 @@ const getInventoryItemDef= (itemId) => {
 const isXurActive = (data) => {
     let xurID = 2190858386;
     
-    if (String(xurID) in data.data.Response.vendors){return true;}
+    if (String(xurID) in data.data.Response.vendors.data){return true;}
     else {return false;}
 }
 
