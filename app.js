@@ -1,5 +1,5 @@
 require('dotenv').config();
-const BungieService = require('./BungieService');
+const BungieService = require('./services/BungieService');
 const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
