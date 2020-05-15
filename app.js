@@ -6,13 +6,17 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const axios = require('axios');
-bungieService = new BungieService();
+const GroupMeService = require('./services/GroupMeService');
+
+const bungieService = new BungieService();
+const groupMeService = new GroupMeService();
 const port = process.env.PORT; 
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+groupMeService.sendMsg("he turned himself into a pickle!");
 
 app.post('/', (req, res) => {
 
@@ -28,8 +32,6 @@ app.post('/', (req, res) => {
         })
     }
 });
-
-
 
 const sendInventory = (data) => {
     let msgString = "Xur's inventory is: \n";
