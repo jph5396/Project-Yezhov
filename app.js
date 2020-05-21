@@ -22,10 +22,10 @@ app.post('/', (req, res) => {
 
     res.status(202).end();
 
-    if(req.body.text.startsWith("%")){
-        cmd = CommandParser.parse(req.body.text);
-        // additional logic to execute command should go here. 
-    }
+    // if(req.body.text.startsWith("%")){
+    //     cmd = CommandParser.parse(req.body.text);
+    //     // additional logic to execute command should go here. 
+    // }
 
     // all old %xur stuff will be replaced when refactoring. 
     if(req.body.text.toLowerCase() === "%xur") {
