@@ -8,10 +8,12 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const axios = require('axios');
-
+const CommandServiceLocator = require("./servicelocators/CommandServiceLocator");
 
 const bungieService = new BungieService();
 const groupMeService = new GroupMeService();
+const commandServiceLocator = new CommandServiceLocator();
+
 const port = process.env.PORT; 
 
 app.use(cors());
@@ -22,10 +24,13 @@ app.post('/', (req, res) => {
 
     res.status(202).end();
 
-    // if(req.body.text.startsWith("%")){
-    //     cmd = CommandParser.parse(req.body.text);
-    //     // additional logic to execute command should go here. 
-    // }
+    // 
+    if(req.body.text.startsWith("%")){
+        cmd = CommandParser.parse(req.body.text);
+        commandServiceLocator.locateCommand(cmd)
+        .then(cmdR => console.log(cmdR))
+        .catch(err => console.log(err));
+    }
 
     // all old %xur stuff will be replaced when refactoring. 
     if(req.body.text.toLowerCase() === "%xur") {
