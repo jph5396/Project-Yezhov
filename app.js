@@ -1,4 +1,3 @@
-require('dotenv').config();
 const BungieService = require('./BungieService');
 const http = require('http');
 const express = require('express');
@@ -7,7 +6,7 @@ const cors = require('cors');
 const app = express();
 const axios = require('axios');
 bungieService = new BungieService();
-const port = process.env.PORT; 
+const port = process.env.PORT || 8080; 
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
