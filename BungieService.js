@@ -16,7 +16,7 @@ class BungieService {
         if (isXurActive(vendorData)){
             let saleList = Object.values(vendorData.data.Response.sales.data[xurId].saleItems);
             const promises = saleList.map(getItemListing);
-            return await Promise.all(promises);
+            return Promise.all(promises);
         }
         else {return Promise.reject("Xur is not active right now.");}
     }

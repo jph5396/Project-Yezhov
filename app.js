@@ -24,6 +24,7 @@ app.post('/', (req, res) => {
         })
         .catch(err => {
             sendErrorMsg(err);
+            console.log("An error has occured." + err)
         })
     }
 });
