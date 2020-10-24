@@ -15,17 +15,25 @@ app.use(bodyParser.json());
 
 app.post('/', (req, res) => {
 
-    res.status(202).end();
     if(req.body.text.toLowerCase() === "%xur") {
-
+        console.log(`${req.body.name} requested xur inventory`);
+        let timer = Date.now() + req.body.name;
+        console.time(timer);
         bungieService.getXurInventory()
         .then( data => {
             sendInventory(data);
+            console.timeEnd(timer);
+            res.status(202).end();
         })
         .catch(err => {
             sendErrorMsg(err);
             console.log("An error has occured." + err)
-        })
+            console.timeEnd(timer)
+            res.status(202).end();
+        }) 
+    }
+    else {
+        res.status(202).end();
     }
 });
 
