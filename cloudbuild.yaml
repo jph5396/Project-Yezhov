@@ -1,0 +1,26 @@
+steps:
+    #BUILD
+    - name: 'gcr.io/cloud-builders/docker'
+      args: ['build', '-t', 'gcr.io/$PROJECT_ID/${_SERVICE_ID}:$SHORT_SHA', '.']
+    #PUSH
+    - name: 'gcr.io/cloud-builders/docker'
+      args: ['push', 'gcr.io/$PROJECT_ID/${_SERVICE_ID}:$SHORT_SHA']
+    #DEPLOY
+    - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+      entrypoint: gcloud
+      args:
+        - 'run'
+        - 'deploy'
+        - '${_SERVICE_ID}'
+        - '--image'
+        - 'gcr.io/$PROJECT_ID/${_SERVICE_ID}:$SHORT_SHA'
+        - '--region'
+        - 'us-east4'
+        - '--platform'
+        - 'managed'
+
+substitutions:
+    _SERVICE_ID: yezhov
+
+images:
+    - 'gcr.io/$PROJECT_ID/${_SERVICE_ID}:$SHORT_SHA'
