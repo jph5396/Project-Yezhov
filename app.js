@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 app.post('/', (req, res) => {
 
-    if(req.body.text.toLowerCase() === "%xur") {
+    if(req.body.text.toLowerCase().trim() === "%xur") {
         console.log(`${req.body.name} requested xur inventory`);
         let timer = Date.now() + req.body.name;
         console.time(timer);
